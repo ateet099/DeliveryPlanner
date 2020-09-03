@@ -1,0 +1,12 @@
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\bin\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.deps.json
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\bin\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.runtimeconfig.json
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\bin\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.runtimeconfig.dev.json
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\bin\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.dll
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\bin\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.pdb
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.csprojAssemblyReference.cache
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.AssemblyInfoInputs.cache
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.AssemblyInfo.cs
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.csproj.CoreCompileInputs.cache
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.dll
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.pdb
+C:\job-assignment\DeliveryPlanner\DeliveryPlanner\obj\Release\netcoreapp3.1\linux-x64\DeliveryPlanner.genruntimeconfig.cache
