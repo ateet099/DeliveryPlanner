@@ -49,7 +49,6 @@ namespace DeliveryPlanner.Model
 
             return result;
         }
-
         private static GoogleMapResponse<GoogleMapAddress> ParseResponse(GoogleMapResponse<GoogleMapAddressT> address)
         {
             if (address is null)

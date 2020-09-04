@@ -25,6 +25,7 @@ namespace DeliveryPlanner.Code
 
         public LambdaResponseModel CalculateFastestDelivery(LambdaRequestModel request)
         {
+            //Google Map Distance matrix request
             var distanceMatrixResponse = GetDistanceMatrix(request);
             var storeCustomerMatrix = distanceMatrixResponse[0];
             var fleetStoreMatrix = distanceMatrixResponse[1];
@@ -36,6 +37,7 @@ namespace DeliveryPlanner.Code
             var storeAddress = fleetToStore.FirstOrDefault().Destination;
             var customerAddress = storeToCustomer.FirstOrDefault().Destination;
 
+            //GeoCode Address to get Latitude and Longitude 
             var GeoCodeAddresses = Geocode(fleetAddress, storeAddress, customerAddress);             
 
             var totalDistance = GetTotalDistanceBetweenFleetToCustomer(fleetToStore, storeToCustomer);
@@ -52,17 +54,7 @@ namespace DeliveryPlanner.Code
             return queryResponse;
         }
 
-        private GoogleMapResponse<GoogleMapDistanceMatrixRow>[] GoogleMapDistanceMatixCall(LambdaRequestModel request, GoogleMap googleMap)
-        {
-            var distanceMatrixResponse = Task.WhenAll(
-              googleMap.GetAllDistanceResults(_client, new List<string>(LocationConstants.StoreAddress), new List<string>() { request.Address }),
-              googleMap.GetAllDistanceResults(_client, new List<string>(LocationConstants.FleetDepotsAddress), new List<string>(LocationConstants.StoreAddress))
-          ).Result;
-
-          return distanceMatrixResponse;
-        }
-
-        public GoogleMapResponse<GoogleMapDistanceMatrixRow>[] GetDistanceMatrix(LambdaRequestModel request)
+        private GoogleMapResponse<GoogleMapDistanceMatrixRow>[] GetDistanceMatrix(LambdaRequestModel request)
         {
             return Task.WhenAll(
                _googleMap.GetAllDistanceResults(_client, new List<string>(LocationConstants.StoreAddress), new List<string>() { request.Address }),
@@ -70,7 +62,7 @@ namespace DeliveryPlanner.Code
            ).Result;
         }
 
-        public GoogleMapLocationModel[] Geocode(string fleetAddress, string storeAddress, string customerAddress)
+        private GoogleMapLocationModel[] Geocode(string fleetAddress, string storeAddress, string customerAddress)
         {
             return Task.WhenAll(
                 _googleMap.GetLocationByAddress(_client, fleetAddress),
@@ -79,19 +71,19 @@ namespace DeliveryPlanner.Code
            ).Result;
         }
 
-        public double GetTotalDistanceBetweenFleetToCustomer(List<GoogleDistanceMatrixModel> fleetToStore, List<GoogleDistanceMatrixModel> storeToCustomer)
+        private double GetTotalDistanceBetweenFleetToCustomer(List<GoogleDistanceMatrixModel> fleetToStore, List<GoogleDistanceMatrixModel> storeToCustomer)
         {
             return fleetToStore.FirstOrDefault().Distance + storeToCustomer.FirstOrDefault().Distance;
         }
 
-        public string GetTotalTravelTimeBetweenFleetToCustomer(double totalDistance)
+        private string GetTotalTravelTimeBetweenFleetToCustomer(double totalDistance)
         {
             var time = (totalDistance / 1000) / DroneConstants.speed;
             TimeSpan span = TimeSpan.FromHours(time);
-            return span.ToString("mm\\:ss");
+            return span.ToString("mm\\:ss");//To minute second format
         }
 
-        public List<GoogleDistanceMatrixModel> GetFastestOriginDestinationFromMatrix(
+        private List<GoogleDistanceMatrixModel> GetFastestOriginDestinationFromMatrix(
                 GoogleMapResponse<GoogleMapDistanceMatrixRow> matrixResponse,
                 List<GoogleDistanceMatrixModel> waypointMatrix = null)
         {

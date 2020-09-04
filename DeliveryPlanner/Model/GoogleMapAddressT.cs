@@ -6,7 +6,7 @@ using System.Text;
 namespace DeliveryPlanner.Model
 {
     [JsonObject]
-    class GoogleMapAddressT: GoogleMapAddressBase,IGoogleMapAddress
+    class GoogleMapAddressT: IGoogleMapAddress
     {
         [JsonProperty("place_id")]
         public string PlaceId { get; set; }

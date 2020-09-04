@@ -8,7 +8,7 @@ namespace DeliveryPlanner.Model
 {
     class GoogleMapDistanceMatrixRow: IGoogleMapDistanceMatrixRow
     {
-       public List<GoogleMapDistanceMatixElement> Elements { get; set; }
+        public List<GoogleMapDistanceMatixElement> Elements { get; set; }
 
         public static async Task<GoogleMapResponse<GoogleMapDistanceMatrixRow>> ParseResponse(HttpResponseMessage response)
         {
